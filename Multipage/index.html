@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Personal Website</title>
+    <link rel="stylesheet" type="text/css" href="webpage.css">
+</head>
+<body>
+    <button id="theme-toggle">Toggle Theme</button>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="Searchthing.html">Search</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <h1>Welcome to My Personal Website</h1>
+    <p>This is the home page of our website, and here is some basic information about me!</p>
+
+    <p>
+        Hey! My name is Hilla Ukonsaari, and I study information and communication technology. I like to spend my free time on hobbies that are important to me. Here are a few of them:</p>
+
+    <ul>
+        <li>Playing video games</li>
+        <li>Singing</li>
+        <li>Photographing</li>
+        <li>Playing cello</li>
+    </ul>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+    
+        themeToggle.addEventListener("click", () => {
+            // Toggle the body class to switch between themes
+            body.classList.toggle("dark-theme");
+            // Store the user's preference in local storage
+            const isDarkTheme = body.classList.contains("dark-theme");
+            localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+        });
+    
+        // Check the user's theme preference in local storage
+        const userTheme = localStorage.getItem("theme");
+        if (userTheme === "dark") {
+            body.classList.add("dark-theme");
+        }
+    </script>
+</body>
+</html>
+

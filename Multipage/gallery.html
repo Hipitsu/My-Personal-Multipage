@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery</title>
+    <link rel="stylesheet" type="text/css" href="webpage.css">
+    <style>
+        .gallery-image {
+            max-width: 200px; 
+            max-height: 200px; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button id="theme-toggle">Toggle Theme</button>
+    </header>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="Searchthing.html">Search</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <h1>Image Gallery</h1>
+
+    <p>Here are some pictures of me and my life:</p>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Enlarged Image">
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="KuvaGalleria/Kaverikuva_1.jpg" class="gallery-image" onclick="openModal('KuvaGalleria/Kaverikuva_1.jpg', 'Picture of my friends')">
+        <p class="image-caption">Picture of my friends</p>
+    </div>
+
+    <div class="image-container">
+        <img src="KuvaGalleria/omakuva.JPG" class="gallery-image" onclick="openModal('KuvaGalleria/omakuva.JPG', 'Picture of me')">
+        <p class="image-caption">Picture of me</p>
+    </div>
+
+    <div class="image-container">
+        <img src="KuvaGalleria/maisemakuva.JPG" class="gallery-image" onclick="openModal('KuvaGalleria/maisemakuva.JPG', 'Picture of a rainbow')">
+        <p class="image-caption">Picture of a rainbow</p>
+    </div>
+
+    <div class="image-container">
+        <img src="KuvaGalleria/omakuva2.jpg" class="gallery-image" onclick="openModal('KuvaGalleria/omakuva2.jpg', 'Another picture of me')">
+        <p class="image-caption">Another picture of me</p>
+    </div>
+
+    <script>
+        // Function to open the modal and display an enlarged image
+        function openModal(imageSrc, caption) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+
+            modal.style.display = "block";
+            modalImage.src = imageSrc;
+            modalImage.alt = caption;
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // Close the modal when clicking outside the image
+        const modal = document.getElementById("imageModal");
+        modal.addEventListener("click", closeModal);
+
+        // Prevent modal from closing when clicking on the image itself
+        const modalContent = document.querySelector(".modal-content");
+        modalContent.addEventListener("click", (event) => {
+            event.stopPropagation();
+        });
+    </script>
+    
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+    
+        themeToggle.addEventListener("click", () => {
+            // Toggle the body class to switch between themes
+            body.classList.toggle("dark-theme");
+            // Store the user's preference in local storage
+            const isDarkTheme = body.classList.contains("dark-theme");
+            localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+        });
+    
+        // Check the user's theme preference in local storage
+        const userTheme = localStorage.getItem("theme");
+        if (userTheme === "dark") {
+            body.classList.add("dark-theme");
+        }
+    </script>
+</body>
+</html>

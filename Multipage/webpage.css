@@ -1,0 +1,31 @@
+:root {
+    --background-color-light: #f5f5f5;
+    --text-color-light: #333;
+    --background-color-dark: #333;
+    --text-color-dark: #fff;
+    --primary-font: 'Arial', sans-serif;
+    --secondary-font: 'Georgia', serif;
+    --heading-color: #0088cc;
+}
+
+/* Light theme styles */
+body {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+    font-family: var(--primary-font);
+}
+
+h1, h2 {
+    color: var(--heading-color);
+}
+
+/* Dark theme styles */
+body.dark-theme {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    font-family: var(--secondary-font);
+}
+
+h1, h2 {
+    color: var(--heading-color);
+}

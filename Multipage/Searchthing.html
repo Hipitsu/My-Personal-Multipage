@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="webpage.css">
+</head>
+<body>
+    <button id="theme-toggle">Toggle Theme</button>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="Searchthing.html">Search</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <h1>Search Page</h1>
+
+    <!-- Add a search input field -->
+    <input type="text" id="search-input" placeholder="Search...">
+
+    <!-- Create a container for search results -->
+    <div id="search-results"></div>
+
+    <script src="script.js"></script>
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const searchInput = document.getElementById("search-input");
+        const searchResults = document.getElementById("search-results");
+
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-theme");
+            const isDarkTheme = document.body.classList.contains("dark-theme");
+            localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+        });
+
+        // Array of page names and their corresponding links
+        const pages = [
+            { name: "Home", link: "index.html" },
+            { name: "Gallery", link: "gallery.html" },
+            { name: "Portfolio", link: "portfolio.html" },
+            { name: "Contact", link: "contact.html" }
+        ];
+
+        // Implement the search functionality
+        searchInput.addEventListener("input", () => {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            searchResults.innerHTML = "";
+
+            if (searchTerm.length === 0) {
+                return;
+            }
+
+            const matchingPages = pages.filter(page => page.name.toLowerCase().includes(searchTerm));
+
+            if (matchingPages.length > 0) {
+                const resultList = document.createElement("ul");
+                matchingPages.forEach(match => {
+                    const listItem = document.createElement("li");
+                    const pageLink = document.createElement("a");
+                    pageLink.textContent = match.name;
+                    pageLink.href = match.link;
+                    listItem.appendChild(pageLink);
+                    resultList.appendChild(listItem);
+                });
+                searchResults.appendChild(resultList);
+            } else {
+                searchResults.textContent = "No matching pages found.";
+            }
+        });
+    </script>
+</body>
+</html>
+
