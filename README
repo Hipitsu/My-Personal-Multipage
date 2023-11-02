@@ -5,3 +5,4 @@ Contact sisältää tiedot, joilla minuun voi ottaa yhteyttä.
 Search sisältää mahdollisuuden etsiä esim. contact sivuston ja antaa linkin, josta pääsee suoraan sinne. 
 Portfoliossa kerron lyhyesti itsestäni ja muutamista projekteista joita olen tehnyt.
 CSS tiedosto sisältää luodut vaalean ja tumman teeman, joihin on myös luotu nappula, jolla käyttäjä voi itse kontrolloida teeman väriä. Fontti ja väri muutoksia on myös tehty.
+Sivusto sisältää myös esimerkki lukkarin sekä Forms tiedoston johon voi lisätä nimen ja sukupuolen yms. 
